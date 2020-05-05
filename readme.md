@@ -10,7 +10,7 @@ The application communicates with a virtual linux server and with the Minecraft 
 This allows you to turn on/of the game server, connect to the server console and call the commands that facilitate the management of the server.
 The application is ready to use and has been tested by the customer.
 
-###Main functions of my application:
+#### Main functions of my application:
  - checking server status(number of active players, etc.),
  - the user is able to turn on/off the server,
  - live server console for administrators,
