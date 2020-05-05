@@ -1,0 +1,16 @@
+{% extends "layout.html" %}
+{% block content %}
+    <div class="container-main text-center">
+        <img style="width:200px!important; height:200px!important;" class=" w-25 rounded mt-4"src="{{url_for('static', filename='icon.jpg')}}" align="middle" />
+                <div>
+                    <form method="post" action="">
+                        {{ form.hidden_tag() }}<br>
+                        {{ form.username.label(class="font-weight-normal") }}<br>
+                        {{ form.username() }}<br>
+                        {{ form.password.label(class="mt-2 mb-0 font-weight-normal") }}<br>
+                        {{ form.password() }}<br>
+                        {{ form.submit(class="btn btn-dark mt-3") }}
+                    </form>
+                </div>
+    </div>
+{% endblock %}

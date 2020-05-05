@@ -1,0 +1,33 @@
+{% extends "layout.html" %}
+{% block content %}
+    <header class="main-header-top bg-dark">
+        <div class="d-flex flex-row-reverse bd-highlight text-light">
+            <div class="p-2 bd-highlight">
+                <div class="btn-group">
+                    <button type="button" class="btn dropdown-toggle text-light" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                    </button>
+                    <div class="dropdown-menu dropdown-menu-right">
+                      <a class="dropdown-item" type="button" href="logout">Wyloguj</a>
+                    </div>
+                  </div>
+            </div>
+            <div class="pt-2 bd-highlight mt-1 mr-0">Witaj, {{ session.username }}</div>
+          </div>
+    </header>
+    <div class="container-main ">
+        <h2 class="m-3 text-dark">Konsola dla serwera {{ server_name }}</h2>
+            <div class="console container mx-5">
+                <div id="console" class=" mh-50 bg-dark text-white pre-scrollable shadow p-3 rounded ">
+                </div>
+                 <form class="mt-2"method="POST" action="" id="consoleForm" onsubmit="return false">
+                  <div class="input-group mb-3">
+                        <input type="text" class="form-control" placeholder="Wpisz komende" id="Cinput" autocomplete="off">
+                  <div class="input-group-append">
+                        <button class="btn btn-outline-secondary" type="button" id="Cbutton" >Wyslij</button>
+                  </div>
+                </div>
+                 </form>
+            </div>
+    </div>
+
+ {% endblock %}

@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>Playtale.pl | {{ title }}</title>
+        <link rel="icon" href="{{ url_for('static', filename='icon.jpg') }}">
+         <!-- Required meta tags -->
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+        <!-- Bootstrap CSS -->
+        <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    </head>
+    <body>
+        {% with messages = get_flashed_messages(with_categories=True) %}
+            {% if messages %}
+                    {% for category, message in messages %}
+                        <div id="flash" class="flash text-center bg-{{ category }} p-2 position-fixed w-100">
+                            {{ message }}
+                        </div>
+                    {% endfor %}
+            {% endif %}
+        {% endwith %}
+        {% block content %}
+        {% endblock %}
+        <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+        <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+        <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.9.1/jquery.min.js"></script>
+        <script type=text/javascript src="{{url_for('static', filename='index.js') }}"></script>
+        <script>
+            {% if title == "Panel administracyjny" %}
+            setInterval(function(){
+            $.ajax({
+                type : "POST",
+                url : '/refresh',
+                dataType: "json",
+                data: JSON.stringify(),
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                $('#stats').html(data.online + " / " + data.max);
+                $('#status').html(data.status);
+                $('#status').addClass(data.color);
+                }
+             })},5000);
+
+
+            {% endif %}
+
+            {% if title == "Konsola" %}
+            var lastlog = ''
+            setInterval(function(){
+            $("#console").animate({ scrollTop: $(document).height() }, "slow");
+            $.ajax({
+                type : "POST",
+                url : '/refreshc',
+                dataType: "json",
+                data: JSON.stringify(),
+                contentType: 'application/json;charset=UTF-8',
+                success: function (data) {
+                    if(lastlog != data.log){
+                        $('#console').append(data.log+ '<br>');
+                        lastlog = data.log;
+                     }
+                }
+            })},1000);
+            var clicked;
+            $("#consoleForm").submit(function(){
+                clicked = $('#Cinput').val();
+                console.log(clicked)
+            $.ajax({
+                type : 'POST',
+                url : "{{url_for('consoleForm')}}",
+                data : {'data':clicked}
+                });
+            $("#Cinput").val('');
+            });
+
+            {% endif %}
+        </script>
+    </body>
+</html>
