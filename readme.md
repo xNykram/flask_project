@@ -22,12 +22,12 @@ I still have a lot of changes to make in this application, because it contains a
 
 <details>
   <summary>Click to expand</summary>
-   1. back to main page,
-   2. read server information from database,
-   3. more flash messages instead print,
-   4. list of players on console page 
-   5. recreate ajax script 
-   6. more...
+1. back to main page,<br>
+2. read server information from database,<br>
+3. more flash messages instead print,<br>
+4. list of players on console page <br>
+5. recreate ajax script <br>
+6. more...<br>
 </details>
 
 # Additional information
