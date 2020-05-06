@@ -20,20 +20,22 @@
         <div class="container">
             <div class="row">
                 <div class="col-sm">
-                    <div class="card server-card shadow-sm ">
+                    <div class="card server-card shadow-sm p-3">
                         <span class="font-weight-bold">Playtale | Serwer 1</span>
-                        <span id="stats"class="server-card-status font-weight-normal">
+                        <span id="stats"class="server-card-status font-weight-normal p-1">
+                            0/0
                         </span>
                         <span id="status" class="badge badge-secondary w-25 p-2">
+                            Offline
                         </span>
-                        <div class="d-flex flex-row bd-highlight w-100">
+                        <div class="d-flex bd-highlight w-100">
                          <form method="POST" action="">
                          {{ form1.hidden_tag() }}
-                         {{ form1.submit1(class="btn btn-success mt-2 w-100") }}
+                         {{ form1.submit1(class="btn mt-2 btn btn-success w-100 pl-2 pr-2 flex-fill bd-highlight") }}
                         </form>
-                        <form method="POST" action="">
+                        <form method="POST" action="" class="ml-1">
                          {{ form2.hidden_tag() }}
-                         {{ form2.submit2(class="btn btn-danger ml-2 mt-2 w-100") }}
+                         {{ form2.submit2(class="btn mt-2 btn btn-danger w-100 pl-2 pr-2 flex-fill bd-highlight") }}
                         </form>
                         </div>
                         <form method="POST" action="">
@@ -42,9 +44,10 @@
                         </form>
                     </div>
                   </div>
+
               <div class="col-sm">
-                <div class="card server-card shadow-sm">
-                    <span class="font-weight-bold">Serwer 2</span>
+                <div class="card server-card shadow-sm p-3">
+                    <span class="font-weight-bold">Serwer x</span>
                     <span class="server-card-status font-weight-normal">0/0</span>
                     <span class="badge badge-secondary w-25 p-2">Offline</span>
                     <button type="button" class="btn btn-success mt-2">Włącz serwer</button>
@@ -52,8 +55,8 @@
                 </div>
               </div>
               <div class="col-sm">
-                <div class="card server-card shadow-sm">
-                    <span class="font-weight-bold">Serwer 3</span>
+                <div class="card server-card shadow-sm p-3">
+                    <span class="font-weight-bold">Serwer x</span>
                     <span class="server-card-status font-weight-normal">0/0</span>
                     <span class="badge badge-secondary w-25 p-2">Offline</span>
                     <button type="button" class="btn btn-success mt-2">Włącz serwer</button>

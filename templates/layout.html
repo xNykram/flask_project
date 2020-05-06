@@ -28,7 +28,8 @@
         <script type=text/javascript src="{{url_for('static', filename='index.js') }}"></script>
         <script>
             {% if title == "Panel administracyjny" %}
-            setInterval(function(){
+
+            function updateInfo(){
             $.ajax({
                 type : "POST",
                 url : '/refresh',
@@ -40,28 +41,39 @@
                 $('#status').html(data.status);
                 $('#status').addClass(data.color);
                 }
-             })},5000);
+            });
+            }
+            updateInfo();
+            setInterval(function(){
+                updateInfo();
+            },5000);
 
 
             {% endif %}
 
             {% if title == "Konsola" %}
-            var lastlog = ''
-            setInterval(function(){
-            $("#console").animate({ scrollTop: $(document).height() }, "slow");
-            $.ajax({
-                type : "POST",
-                url : '/refreshc',
-                dataType: "json",
-                data: JSON.stringify(),
-                contentType: 'application/json;charset=UTF-8',
-                success: function (data) {
-                    if(lastlog != data.log){
-                        $('#console').append(data.log+ '<br>');
-                        lastlog = data.log;
-                     }
-                }
-            })},1000);
+             var lastlog = ''
+            function updateConsole(){
+                $("#console").animate({ scrollTop: $(document).height() }, "slow");
+                $.ajax({
+                    type : "POST",
+                    url : '/refreshc',
+                    dataType: "json",
+                    data: JSON.stringify(),
+                    contentType: 'application/json;charset=UTF-8',
+                    success: function (data) {
+                        if(lastlog != data.log){
+                            $('#console').append(data.log+ '<br>');
+                            lastlog = data.log;
+                        }
+                    }
+                });
+            }
+           updateConsole();
+           setInterval(function(){
+                updateConsole();
+           },1000);
+
             var clicked;
             $("#consoleForm").submit(function(){
                 clicked = $('#Cinput').val();
