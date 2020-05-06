@@ -22,11 +22,11 @@ I still have a lot of changes to make in this application, because it contains a
 
 <details>
   <summary>Click to expand</summary>
-1. back to main page,<br>
-2. read server information from database,<br>
+1. password security
+2. upgrade password security
 3. more flash messages instead print,<br>
 4. list of players on console page <br>
-5. recreate ajax script <br>
+5. improve the look of the website
 6. more...<br>
 </details>
 
