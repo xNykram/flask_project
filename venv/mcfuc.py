@@ -8,6 +8,7 @@ class mcManage:
         #information about current server
         self.status = False
         self.max = 0
+        self.players = []
         self.online = 0
         self.ip = ip
         self.port = port
@@ -54,6 +55,7 @@ class mcManage:
                 rcon.login(self.login)
                 self.status = True
                 self.max = rcon.players.max
+                self.players = rcon.players.names
                 self.online = rcon.players.online
         except Exception as e:
             self.stats = False
@@ -93,9 +95,13 @@ class mcManage:
         client.load_system_host_keys()
         client.set_missing_host_key_policy(paramiko.AutoAddPolicy())
         client.connect(self.ip, self.VPSport, self.VPSUser, self.VPSpasswd)
+        sleep(0.5)
         stdin, stdout, stderr = client.exec_command('cat /home/MC/logs/latest.log ', get_pty=True)
         sleep(0.5)
         net_dump = stdout.readlines()
-        sleep(0.5)
+        net_dump_lastline = net_dump[len(net_dump) - 1]
         client.close()
-        return  net_dump[len(net_dump)-1]
+        for i in range(1,10):
+            net_dump[len(net_dump) - i]
+            if not "connection" in net_dump[len(net_dump) - i]:
+                return net_dump[len(net_dump) - i]

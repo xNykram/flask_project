@@ -14,10 +14,11 @@
             <div class="pt-2 bd-highlight mt-1 mr-0">Witaj, {{ session.username }}</div>
           </div>
     </header>
-    <div class="container-main ">
+    <div class="container-main">
         <button type="button" onclick="window.history.back();" class="btn btn-secondary m-2 font-size">&laquo; Panel Administracyjny</button>
         <h2 class="m-3 text-dark">Konsola dla serwera {{ server_name }}</h2>
-            <div class="console container mx-5">
+            <div class="container-content d-flex justify-content-center">
+                <div class="console container mx-5">
                 <div id="console" class=" mh-50 bg-dark text-white pre-scrollable shadow p-3 rounded ">
                 </div>
                  <form class="mt-2"method="POST" action="" id="consoleForm" onsubmit="return false">
@@ -28,6 +29,12 @@
                   </div>
                 </div>
                  </form>
+            </div>
+            <div class="container text-secondary d-inline w-25">
+                Gracze online:
+                <hr>
+                <div id="playersonline"></div>
+             </div>
             </div>
     </div>
 

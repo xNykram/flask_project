@@ -52,7 +52,7 @@
             {% endif %}
 
             {% if title == "Konsola" %}
-             var lastlog = ''
+            var lastlog = '';
             function updateConsole(){
                 $("#console").animate({ scrollTop: $(document).height() }, "slow");
                 $.ajax({
@@ -63,9 +63,17 @@
                     contentType: 'application/json;charset=UTF-8',
                     success: function (data) {
                         if(lastlog != data.log){
-                            $('#console').append(data.log+ '<br>');
+                            if (data.log != "undefined"){
+                               $('#console').append(data.log+ '<br>');
+                               console.log(lastlog)
+                               lastlog = data.log;
+                            }
+                            console.log(lastlog)
                             lastlog = data.log;
                         }
+                        console.log(lastlog)
+                        lastlog = data.log;
+                        $('#playersonline').html(data.players);
                     }
                 });
             }

@@ -25,7 +25,7 @@ def login():
             if username == None:
                 flash("Nie znaleziono uzytkownika o takim nicku: {}".format(Fusername), category='danger')
                 return redirect(url_for('login'))
-            password = mysqlModule.Search("SELECT * from f_Users where passwd = MD5(CONCAT(salt, '{}'))".format(Fpassword))
+            password = mysqlModule.Search("SELECT passwd FROM f_Users WHERE passwd = MD5(CONCAT(salt, '{}')) AND  nickname = '{}'".format(Fpassword, Fusername))
             if password == None:
                 flash("Bledne haslo dla uzytkownika {}".format(Fusername), category='danger')
                 return redirect(url_for('login'))
@@ -82,13 +82,15 @@ def refresh():
 @app.route('/refreshc', methods=['POST'])
 def refreshc():
     if request.method == 'POST':
-       try:
-            mcmgr = mcfuc.mcManage(mysqlModule.server_ip, 25575, mysqlModule.server_password)
+        mcmgr = mcfuc.mcManage(mysqlModule.server_ip, 25575, mysqlModule.server_password)
+        mcmgr.stats()
+        playersOnline = mcmgr.players
+        try:
             lastLog = mcmgr.downloadLogs()
             replace = lastLog.replace("<"," ").replace(">", ":").replace("[m", " ").replace(""," ")
-            return jsonify(log=replace)
-       except Exception:
-           pass
+            return jsonify(log=replace, players=playersOnline)
+        except Exception:
+            return jsonify(log="undefined", players=playersOnline)
 
 @app.route('/console', methods=['GET','POST'])
 def console():
