@@ -25,8 +25,7 @@ The application is ready to use and has been tested by the customer.
 1. password hasing,<br>
 2. upgrade password security,<br>
 3. more flash messages instead print,<br>
-4. list of players on console page, <br>
-5. improve the look of the website,<br>
+4. improve the look of the website,<br>
 </details>
 
 # Additional information
