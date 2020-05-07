@@ -13,7 +13,7 @@ The application is ready to use and has been tested by the customer. The client 
  - the user is able to turn on/off the server,
  - live server console for administrators,
  - the application connects to the database,
- - virtual server control
+ - managing a virtual server via SSH.
 
 [mcfuc](https://github.com/xNykram/flask_project/tree/master/venv/mcfuc.py) is a module created by me. That allows me to quickly manage the Minecraft server
 
