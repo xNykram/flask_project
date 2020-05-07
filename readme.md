@@ -13,7 +13,7 @@ The application is ready to use and has been tested by the customer. The client 
  - the user is able to turn on/off the server,
  - live server console for administrators,
  - the application connects to the database,
- - virtual server control,
+ - virtual server control
 
 [mcfuc](https://github.com/xNykram/flask_project/tree/master/venv/mcfuc.py) is a module created by me. That allows me to quickly manage the Minecraft server
 
@@ -26,6 +26,7 @@ The application is ready to use and has been tested by the customer. The client 
 2. upgrade password security,<br>
 3. more flash messages instead print,<br>
 4. improve the look of the website,<br>
+5. more things...,<br>
 </details>
 
 # Additional information
